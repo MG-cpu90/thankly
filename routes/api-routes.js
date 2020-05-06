@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var Sequelize = require("sequelize");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -50,4 +51,21 @@ module.exports = function(app) {
       });
     }
   });
+
+  // Route for getting a random prompt order: Sequelize.literal('rand()'), 
+  app.get("/api/prompt", function(req, res) {
+    db.Prompts.findAll({ order: Sequelize.literal('rand()'), limit: 1 }).then((randThank) => {
+      console.log(randThank);
+      res.json(randThank);
+    });
+  });
+
+  // Route for getting a specific prompt
+  app.get("/api/prompt/:id", function(req, res) {
+    db.Prompts.findOne({ where: { id: req.params.id }}).then((idThank) => {
+      console.log(idThank);
+      res.json(idThank);
+    })
+  })
+
 };
