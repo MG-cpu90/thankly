@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     // The email cannot be null, and must be a proper email before creation
     prompt: {
       type: DataTypes.STRING,
-      allowNull: false      
+      allowNull: true
     },
     body: {
       type: DataTypes.STRING,
@@ -14,9 +14,6 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
     },
-    created_at: {
-        type: DataTypes.DATE
-    }
   });
   // Custom methods for a Thank. Currently none
   /* User.prototype.validPassword = function(password) {
