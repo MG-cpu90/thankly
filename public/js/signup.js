@@ -40,3 +40,25 @@ $(document).ready(function() {
     $("#alert").fadeIn(500);
   }
 });
+
+$(document).ready(function() {
+  // Getting references to our form and input
+  var thankForm = $("form.login");
+  var authorInput = $("input#email-input");
+  var bodyInput = $("input#password-input");
+  thankForm.on("submit", function(event) {
+    event.preventDefault();
+    console.log("clicked");
+    // var userPost = {
+    //   author: authorInput.val().trim(),
+    //   body: bodyInput.val().trim()
+    // };
+    // if (!userPost.author || !userPost.body) {
+    //   return;
+    // }
+    $.get("/api/prompt", function(data) {
+      console.log(data);
+    
+    });
+});
+})
