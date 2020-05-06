@@ -66,6 +66,57 @@ module.exports = function(app) {
       console.log(idThank);
       res.json(idThank);
     })
-  })
+  });
+
+    // Route for posting a new thank
+    app.post("/api/new", function(req, res) {
+
+      console.log("Thank Data: ");
+      console.log(req.body);
+
+      db.Thank.create({
+        prompt: "Test Prompt: Name five things that you are thankful for today",
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+      }).then(function(results) {
+        // `results` here would be the newly created thank
+        res.end();
+      });
+
+      // db.Prompts.findOne({ where: { id: req.params.id }}).then((idThank) => {
+      //   console.log(idThank);
+      //   res.json(idThank);
+      // })
+    });
+
+  // Route for getting all thanks 
+  app.get("/api/all", function(req, res) {
+    db.Thank.findAll({}).then((allThanks) => {
+      console.log(allThanks);
+      res.json(allThanks);
+    });
+  });
+
+  // Route for getting a specific thank
+  app.get("/api/thank/:id", function(req, res) {
+    db.Thank.findOne({ where: { id: req.params.id }}).then((idThank) => {
+      console.log(idThank);
+      res.json(idThank);
+    })
+  });
+
+  // Route for deleting a Thank
+  app.delete("/api/thank/:id", function(req, res) {
+    console.log("Deleted Thank ID:");
+    console.log(req.params.id);
+    db.Thank.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function() {
+      res.end();
+    });
+  });
 
 };
