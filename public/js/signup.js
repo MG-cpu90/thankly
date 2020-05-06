@@ -1,61 +1,18 @@
-$(document).ready(function() {
+const thankForm = $("form.login");
+const authorInput = $("input#email-input2");
+const bodyInput = $("input#password-input2");
+const promptHeading = $("#prompt-heading");
+const postThank = $("#post-thank");
+const thankArea = $("#thank-area");
+
+$(document).ready(function () {
   // Getting references to our form and input
-  var signUpForm = $("form.signup");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
 
-  // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on("submit", function(event) {
+  
+
+  thankForm.on("submit", function (event) {
     event.preventDefault();
-    var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
-    };
-
-    if (!userData.email || !userData.password) {
-      return;
-    }
-    // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
-  });
-
-  // Does a post to the signup route. If successful, we are redirected to the members page
-  // Otherwise we log any errors
-  function signUpUser(email, password) {
-    $.post("/api/signup", {
-      email: email,
-      password: password
-    })
-      .then(function(data) {
-        window.location.replace("/members");
-        // If there's an error, handle it by throwing up a bootstrap alert
-      })
-      .catch(handleLoginErr);
-  }
-
-
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
-});
-
-$(document).ready(function() {
-  // Getting references to our form and input
-  var thankForm = $("form.login");
-  var authorInput = $("input#email-input2");
-  var bodyInput = $("input#password-input2");
-  thankForm.on("submit", function(event) {
-    event.preventDefault();
-    console.log("clicked");
-
-    // GET request
-    $.get("/api/prompt", function(data) {
-      console.log(data);
-    
-    });
+    //console.log("clicked");
 
     // Make a userPost object
     var userPost = {
@@ -67,34 +24,46 @@ $(document).ready(function() {
       return;
     }
 
-  // Send an AJAX POST-request with jQuery
-  $.post("/api/new", userPost)
-    // On success, run the following code
-    .then(function() {
-      console.log(userPost);
+    // Send an AJAX POST-request with jQuery
+    $.post("/api/new/" + postThank.data("promptid"), userPost)
+      // On success, run the following code
+      .then(function () {
+        //console.log(userPost);
 
-      var row = $("<div>");
-      row.addClass("thank");
+        var row = $("<div>");
+        row.addClass("thank");
 
-      row.append("<p>" + userPost.author + " posted: </p>");
-      row.append("<p>" + userPost.body + "</p>");
-      row.append("<p>At " + moment(userPost.created_at).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
-      row.append("<button><i class='fa fa-trash'></i></button>");
+        row.append("<p>" + userPost.author + " posted: </p>");
+        row.append("<p>" + userPost.body + "</p>");
+        row.append("<p>At " + moment(userPost.createdAt).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
+        row.append("<button><i class='fa fa-trash'></i></button>");
 
-      $("#thank-area").prepend(row);
+        thankArea.prepend(row);
 
-    });
+      });
 
-  // Empty each input box by replacing the value with an empty string
-  authorInput.val("");
-  bodyInput.val("");
+    // Empty each input box by replacing the value with an empty string
+    authorInput.val("");
+    bodyInput.val("");
 
-});
+  });
+})
+
+$(document).click(function(event) {
+  if ($(event.target).is( ".delete-thank" ))  {
+    console.log("Clicked delete");
+  }
+})
+
+$.get("/api/prompt", function(data) {
+  promptHeading.after(`<h3>${data[0].question}</h3>`);
+  postThank.data("promptid",data[0].id);
 })
 
 // When the page loads, grab all of our thanks
-$.get("/api/all", function(data) {
-
+$.get("/api/all", function (data) {
+  renderThanks(data);  
+  /*
   if (data.length !== 0) {
 
     for (var i = 0; i < data.length; i++) {
@@ -104,13 +73,26 @@ $.get("/api/all", function(data) {
 
       row.append("<p>" + data[i].author + " posted: </p>");
       row.append("<p>" + data[i].body + "</p>");
-      row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
-      row.append("<button><i class='fa fa-trash'></i></button>");
-
-      $("#thank-area").prepend(row);
-
+      row.append("<p>At " + moment(data[i].createdAt).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
+      row.append(`<button class='delete-thank' data-id=${data[i].id}><i class='fa fa-trash'></i></button>`);
+      thankArea.prepend(row);
     }
-
-  }
-
+  }*/
 });
+
+function renderThanks(data) {
+  thankArea.empty();
+  for (var i = 0; i < data.length; i++) {
+    displayThank(data[i].author,data[i].body,data[i].createdAt,data[i].id);
+  }
+}
+
+function displayThank(author, body, createdAt, id) {
+  var row = $("<div>");
+  row.addClass("thank");
+  row.append("<p>" + author + " posted: </p>");
+  row.append("<p>" + body + "</p>");
+  row.append("<p>At " + moment(createdAt).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
+  row.append(`<button class='delete-thank' data-id=${id}><i class='fa fa-trash'></i></button>`);
+  thankArea.prepend(row);
+}
