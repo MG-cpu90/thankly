@@ -1,8 +1,211 @@
+/* CSS RESET START */
+
+/* html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}  */
+/* HTML5 display-role reset for older browsers */
+/* article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}  */
+
+/* CSS RESET END */
+
+/* PAGE FUNCTIONALITY START */
+
+.hidden {
+    display: none;
+}
+
+/* PAGE FUNCTIONALITY END */
+
+/* TYPOGRAPHY START */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+p {
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+li {
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.brand-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 46px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 46px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: lowercase;
+    text-decoration: underline;
+}
+
+/* Form */
+
 form.signup,
 form.login {
   margin-top: 50px;
 }
 
+/* Make Icons for buttons and links clickable */
+
 button > * {
   pointer-events: none;
 }
+
+a > * {
+  pointer-events: none;
+}
+
+/* TYPOGRAPHY END */
+
+/* BASIC STYLES START */
+
+.waves-effect.waves-light.btn {
+    background-color: #92a08cff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 0px;
+}
+
+/* BASIC STYLES END */
+
+/* MAIN NAV START */
+
+nav {
+    background-color: #92a08cff;
+    position: absolute;
+    top: 0;
+}
+
+nav ul {
+    margin: 0;
+    display: block;
+}
+
+nav ul li a {
+    transition: background-color .3s;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    display: block;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+/* MAIN NAV END */
+
+/* CONTAINER AND DIV STYLING START */
+
+.container.full-page {
+    width: 100%;
+    background: url(assets/thankly_background_2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 2% 20%;
+}
+
+div.full-page {
+    padding: 25px;
+}
+
+/* CONTAINER AND DIV STYLING START */
+
+/* JOURNAL ENTRY PAGE START */
+
+.journal-entry-textarea {
+    height: 400px!important;
+    border: 1px solid #000000!important;
+    padding: 10px!important;
+}
+
+.input-field>label.journal-entry-label {
+    color: #000000;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 10px!important;
+}
+
+.journal-entry-active {
+    color: #000000;
+}
+
+/* JOURNAL ENTRY PAGE END */
+
+/* PDF PAGE START */
+
+.pdf-download-section {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.pdfpage-download-btn {
+    height: 200px;
+    width: auto;
+}
+
+/* PDF PAGE END */

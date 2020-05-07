@@ -4,7 +4,6 @@ const bodyInput = $("#body-input");
 const promptHeading = $("#prompt-heading");
 const postThank = $("#post-thank");
 const thankArea = $("#thank-area");
-const deleteThankButton= $(".delete-thank");
 
 $(document).ready(function () {
   // Getting references to our form and input
@@ -30,6 +29,16 @@ $(document).ready(function () {
       // On success, run the following code
       .then(function () {
         //console.log(userPost);
+
+        // var row = $("<div>");
+        // row.addClass("thank");
+
+        // row.append("<p>" + userPost.author + " posted: </p>");
+        // row.append("<p>" + userPost.body + "</p>");
+        // row.append("<p>At " + moment(userPost.createdAt).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
+        // row.append("<button><i class='fa fa-trash'></i></button>");
+
+        // thankArea.prepend(row);
 
         var row = $("<div class='col s12'>");
 
@@ -64,7 +73,6 @@ $(document).ready(function () {
 $(document).click(function (event) {
   if ($(event.target).is(".delete-thank")) {
     console.log("Clicked delete");
-    deleteThank();
   }
 })
 
@@ -101,6 +109,15 @@ function renderThanks(data) {
 }
 
 function displayThank(author, body, createdAt, id) {
+  // var row = $("<div>");
+  // row.addClass("thank");
+  // row.append("<p>" + author + " posted: </p>");
+  // row.append("<p>" + body + "</p>");
+  // row.append("<p>At " + moment(createdAt).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
+  // row.append(`<button class='delete-thank' data-id=${id}><i class='fa fa-trash'></i></button>`);
+  // thankArea.prepend(row);
+
+
   var row = $("<div class='col s12'>");
 
   row.addClass("thank");
@@ -121,25 +138,5 @@ function displayThank(author, body, createdAt, id) {
       `);
 
   thankArea.prepend(row);
-}
 
-function deleteThank() {
-  console.log("Thank deleted!");
-
-  // var listItemData = $(this).parent("td").parent("tr").data("author");
-  // var id = listItemData.id;
-  // $.ajax({
-  //   method: "DELETE",
-  //   url: "/api/thank/:id" + id
-  // })
-  //   .then(renderThanks);
-
-  // // Authors Book Activity – delete function example
-  // var listItemData = $(this).parent("td").parent("tr").data("author");
-  // var id = listItemData.id;
-  // $.ajax({
-  //   method: "DELETE",
-  //   url: "/api/authors/" + id
-  // })
-  //   .then(getAuthors);
 }
