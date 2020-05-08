@@ -93,6 +93,20 @@ h4 {
     text-decoration: underline;
 }
 
+.quote {
+    font-style: italic;
+}
+
+/* Form */
+.mood-buttons{
+    background-color: #dac1b6; /* Green */
+    border: none;
+    color: #dac1b6;
+    padding: 0px;
+}
+
+.mood
+
 /* Form */
 
 form.signup,
@@ -121,10 +135,6 @@ a > * {
     font-size: 20px;
     font-weight: 500;
     border-radius: 0px;
-}
-
-.quote {
-    
 }
 
 /* BASIC STYLES END */
@@ -159,6 +169,7 @@ nav ul li a {
     display: block;
     padding: 0 15px;
     cursor: pointer;
+    
 }
 
 /* MAIN NAV END */
@@ -214,6 +225,10 @@ div.full-page {
 .pdfpage-download-btn {
     height: 200px;
     width: auto;
+}
+
+.picture_as_pdf{
+        height: 200px;
 }
 
 /* PDF PAGE END */
