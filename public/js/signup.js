@@ -17,6 +17,7 @@ $(document).ready(function () {
       body: bodyInput.val().trim(),
       created_at: moment().format("YYYY-MM-DD HH:mm:ss")
     };
+    // Wont submit the thank if we are missing a body or author
     if (!userPost.author || !userPost.body) {
       return;
     }
@@ -43,6 +44,7 @@ $(document).ready(function () {
                           <p class="prompt-example">What are 5 things you're grateful for today?</p>
                           <p class="thank-example">${userPost.body}</p>
                           <a class="waves-effect waves-light btn delete-thank"><i class="material-icons">delete</i></a>
+                          <a class="waves-effect waves-light btn edit-thank"><i class="material-icons">edit</i></a>
                       </div>
                   </div>
               </div>
@@ -75,10 +77,18 @@ $.get("/api/all", function (data) {
   renderThanks(data);
 });
 
-// When the delete button is clicked, delete that particular Thanks
+// When the delete button is clicked, delete that particular Thank
 $(document).click(function (event) {
   if ($(event.target).is(".delete-thank")) {
     handleDeleteThank();
+  }
+})
+
+// When the edit button is clicked, edit that particular Thank
+$(document).click(function (event) {
+  if ($(event.target).is(".edit-thank")) {
+
+    handleEditThank();
   }
 })
 
@@ -106,6 +116,7 @@ function displayThank(author, body, createdAt, id) {
                   <p class="prompt-example">What are 5 things you're grateful for today?</p>
                   <p class="thank-example">${body}</p>
                   <a class="waves-effect waves-light btn delete-thank" data-id=${id}><i class="material-icons">delete</i></a>
+                  <a class="waves-effect waves-light btn edit-thank" data-id=${id}><i class="material-icons">edit</i></a>
               </div>
           </div>
       </div>
@@ -114,6 +125,7 @@ function displayThank(author, body, createdAt, id) {
   thankArea.prepend(row);
 }
 
+// Function handling the DELETE request
 function handleDeleteThank() {
 
   let deleteID = event.target.dataset.id;
@@ -121,6 +133,7 @@ function handleDeleteThank() {
   deleteThank(deleteID);
 }
 
+// Function for deleting a thank
 function deleteThank(id) {
 
   $.ajax({
@@ -132,4 +145,33 @@ function deleteThank(id) {
     });
   })
 
+}
+
+// Function handling the DELETE request
+function handleEditThank() {
+
+  let editID = event.target.dataset.id;
+
+  updateThank(editID);
+}
+
+// Function for updating a given thank
+function updateThank(thank) {
+
+  // let putID = $(this).data("id");
+
+  // $.ajax({
+  //   method: "PUT",
+  //   url: "/api/thank" + putID,
+  //   data: thank
+  // })
+  //   .then(function (res) {
+  console.log("Edit button clicked!");
+  console.log(thank);
+
+  //     $.get("/api/all", function (data) {
+  //       renderThanks(data);
+
+  //   });
+  // })
 }
