@@ -1,22 +1,19 @@
-const thankForm = $("form.login");
+// variables
 const authorInput = $("#author-input");
 const bodyInput = $("#body-input");
 const promptHeading = $("#prompt-heading");
 const postThank = $("#post-thank");
 const thankArea = $("#thank-area");
-const deleteThankButton= $(".delete-thank");
+const deleteThankButton = $(".delete-thank");
 
 $(document).ready(function () {
   // Getting references to our form and input
 
-
-
   postThank.on("click", function (event) {
     event.preventDefault();
-    //console.log("clicked");
 
     // Make a userPost object
-    var userPost = {
+    let userPost = {
       author: authorInput.val().trim(),
       body: bodyInput.val().trim(),
       created_at: moment().format("YYYY-MM-DD HH:mm:ss")
@@ -29,17 +26,16 @@ $(document).ready(function () {
     $.post("/api/new/" + postThank.data("promptid"), userPost)
       // On success, run the following code
       .then(function () {
-        //console.log(userPost);
 
-        var row = $("<div class='col s12'>");
+        let row = $("<div class='col s12'>");
 
         row.addClass("thank");
 
         row.append(
           `
-        <div class="col s12">
-                <div class="row">
-                    <div class="col s12">
+        <div class="col s12 thank-container1">
+                <div class="row thank-container2">
+                    <div class="col s12 thank-container3">
                         <p class="name-example">${userPost.author} posted:</p>
                         <p class="date-example">At ${moment(userPost.createdAt).format("h:mma on dddd, MMMM Do YYYY")}</p>
                         <p class="prompt-example">What are 5 things you're grateful for today?</p>
@@ -63,8 +59,7 @@ $(document).ready(function () {
 
 $(document).click(function (event) {
   if ($(event.target).is(".delete-thank")) {
-    console.log("Clicked delete");
-    deleteThank();
+    handleDeleteThank();
   }
 })
 
@@ -76,21 +71,6 @@ $.get("/api/prompt", function (data) {
 // When the page loads, grab all of our thanks
 $.get("/api/all", function (data) {
   renderThanks(data);
-  /*
-  if (data.length !== 0) {
-
-    for (var i = 0; i < data.length; i++) {
-
-      var row = $("<div>");
-      row.addClass("thank");
-
-      row.append("<p>" + data[i].author + " posted: </p>");
-      row.append("<p>" + data[i].body + "</p>");
-      row.append("<p>At " + moment(data[i].createdAt).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
-      row.append(`<button class='delete-thank' data-id=${data[i].id}><i class='fa fa-trash'></i></button>`);
-      thankArea.prepend(row);
-    }
-  }*/
 });
 
 function renderThanks(data) {
@@ -101,15 +81,15 @@ function renderThanks(data) {
 }
 
 function displayThank(author, body, createdAt, id) {
-  var row = $("<div class='col s12'>");
+  let row = $("<div class='col s12'>");
 
   row.addClass("thank");
 
   row.append(
     `
-  <div class="col s12">
-          <div class="row">
-              <div class="col s12">
+  <div class="col s12 thank-container1">
+          <div class="row thank-container2">
+              <div class="col s12 thank-container3">
                   <p class="name-example">${author} posted:</p>
                   <p class="date-example">At ${moment(createdAt).format("h:mma on dddd, MMMM Do YYYY")}</p>
                   <p class="prompt-example">What are 5 things you're grateful for today?</p>
@@ -123,23 +103,24 @@ function displayThank(author, body, createdAt, id) {
   thankArea.prepend(row);
 }
 
-function deleteThank() {
+function handleDeleteThank() {
   console.log("Thank deleted!");
 
-  // var listItemData = $(this).parent("td").parent("tr").data("author");
-  // var id = listItemData.id;
-  // $.ajax({
-  //   method: "DELETE",
-  //   url: "/api/thank/:id" + id
-  // })
-  //   .then(renderThanks);
+  let deleteID = event.target.dataset.id;
+  console.log(event.target);
 
-  // // Authors Book Activity – delete function example
-  // var listItemData = $(this).parent("td").parent("tr").data("author");
-  // var id = listItemData.id;
-  // $.ajax({
-  //   method: "DELETE",
-  //   url: "/api/authors/" + id
-  // })
-  //   .then(getAuthors);
+  deleteThank(deleteID);
+}
+
+function deleteThank(id) {
+
+  $.ajax({
+    method: "DELETE",
+    url: "/api/thank/" + id
+  }).then(function (res) {
+    $.get("/api/all", function (data) {
+      renderThanks(data);
+    });
+  });
+
 }
