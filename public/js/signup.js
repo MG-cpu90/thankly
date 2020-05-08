@@ -1,4 +1,3 @@
-// variables
 const authorInput = $("#author-input");
 const bodyInput = $("#body-input");
 const promptHeading = $("#prompt-heading");
@@ -22,47 +21,50 @@ $(document).ready(function () {
       return;
     }
 
-    // Send an AJAX POST-request with jQuery
+    // Send an AJAX POST-request with jQuery to Post a new Thank
     $.post("/api/new/" + postThank.data("promptid"), userPost)
       // On success, run the following code
-      .then(function () {
+      .then(function (res) {
+        // Get all thanks
+        $.get("/api/all", function (data) {
 
-        let row = $("<div class='col s12'>");
+          // Generate HTML for new thank
+          let row = $("<div class='col s12'>");
 
-        row.addClass("thank");
+          row.addClass("thank");
 
-        row.append(
-          `
-        <div class="col s12 thank-container1">
-                <div class="row thank-container2">
-                    <div class="col s12 thank-container3">
-                        <p class="name-example">${userPost.author} posted:</p>
-                        <p class="date-example">At ${moment(userPost.createdAt).format("h:mma on dddd, MMMM Do YYYY")}</p>
-                        <p class="prompt-example">What are 5 things you're grateful for today?</p>
-                        <p class="thank-example">${userPost.body}</p>
-                        <a class="waves-effect waves-light btn delete-thank"><i class="material-icons">delete</i></a>
-                    </div>
-                </div>
-            </div>
-            `);
+          row.append(
+            `
+          <div class="col s12 thank-container1">
+                  <div class="row thank-container2">
+                      <div class="col s12 thank-container3">
+                          <p class="name-example">${userPost.author} posted:</p>
+                          <p class="date-example">At ${moment(userPost.createdAt).format("h:mma on dddd, MMMM Do YYYY")}</p>
+                          <p class="prompt-example">What are 5 things you're grateful for today?</p>
+                          <p class="thank-example">${userPost.body}</p>
+                          <a class="waves-effect waves-light btn delete-thank"><i class="material-icons">delete</i></a>
+                      </div>
+                  </div>
+              </div>
+              `);
 
-        thankArea.prepend(row);
+          thankArea.prepend(row);
+
+          // Render database of thanks so that each thank is created with an ID
+          renderThanks(data);
+
+        });
+
+        // Empty each input box by replacing the value with an empty string
+        authorInput.val("");
+        bodyInput.val("");
 
       });
 
-    // Empty each input box by replacing the value with an empty string
-    authorInput.val("");
-    bodyInput.val("");
-
-  });
+  })
 })
 
-$(document).click(function (event) {
-  if ($(event.target).is(".delete-thank")) {
-    handleDeleteThank();
-  }
-})
-
+// Send an AJAX GET-request with jQuery to Get a random Prompt
 $.get("/api/prompt", function (data) {
   promptHeading.after(`<h3>${data[0].question}</h3>`);
   postThank.data("promptid", data[0].id);
@@ -73,6 +75,14 @@ $.get("/api/all", function (data) {
   renderThanks(data);
 });
 
+// When the delete button is clicked, delete that particular Thanks
+$(document).click(function (event) {
+  if ($(event.target).is(".delete-thank")) {
+    handleDeleteThank();
+  }
+})
+
+// Function for rendering all thanks
 function renderThanks(data) {
   thankArea.empty();
   for (var i = 0; i < data.length; i++) {
@@ -80,6 +90,7 @@ function renderThanks(data) {
   }
 }
 
+// Function for displaying thanks
 function displayThank(author, body, createdAt, id) {
   let row = $("<div class='col s12'>");
 
@@ -104,10 +115,8 @@ function displayThank(author, body, createdAt, id) {
 }
 
 function handleDeleteThank() {
-  console.log("Thank deleted!");
 
   let deleteID = event.target.dataset.id;
-  console.log(event.target);
 
   deleteThank(deleteID);
 }
@@ -121,6 +130,6 @@ function deleteThank(id) {
     $.get("/api/all", function (data) {
       renderThanks(data);
     });
-  });
+  })
 
 }
