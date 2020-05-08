@@ -72,26 +72,25 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <h3>Hello [NAME],</h3><br />
+                <h3>Hello!</h3>
                 <p>How are you feeling today?</p>
             </div>
         </div>
         <div class="row">
-            <div class="col s2"><img src="./assets/images/emoticons/Thankly-Face-1.png" style="height: 150px; width: auto" /></div>
-            <div class="col s2"><img src="./assets/images/emoticons/Thankly-Face-2.png" style="height: 150px; width: auto" /></div>
-            <div class="col s2"><img src="./assets/images/emoticons/Thankly-Face-3.png" style="height: 150px; width: auto" /></div>
-            <div class="col s2"><img src="./assets/images/emoticons/Thankly-Face-4.png" style="height: 150px; width: auto" /></div>
-            <div class="col s2"><img src="./assets/images/emoticons/Thankly-Face-5.png" style="height: 150px; width: auto" /></div>
+            <div class="col s2"><button type ="button" class="mood-buttons sadbutton"><img src="./assets/images/emoticons/Thankly-Face-1.png" style="height: 75px; width: auto" /></button></div>
+            <div class="col s2"><button type ="button" class="mood-buttons glumbutton"><img src="./assets/images/emoticons/Thankly-Face-2.png" style="height: 75px; width: auto" /></button></div>
+            <div class="col s2"><button type ="button" class="mood-buttons mehbutton"><img src="./assets/images/emoticons/Thankly-Face-3.png" style="height: 75px; width: auto" /></button></div>
+            <div class="col s2"><button type ="button" class="mood-buttons happybutton"><img src="./assets/images/emoticons/Thankly-Face-4.png" style="height: 75px; width: auto" /></button></div>
+            <div class="col s2"><button type ="button" class="mood-buttons happiestbutton"><img src="./assets/images/emoticons/Thankly-Face-5.png" style="height: 75px; width: auto" /></button></div>
         </div>
         <div class="row">
             <div class="col s12">
-                <h4>A Look Back</h4>
-                <p><strong>May 2, 2019</strong></p>
-                <p>On this day last year, you conquered your fear of the dark.</p>
+                <div class="mood-inspiration"></div>
             </div>
         </div>
         <div class="row">
             <div class="col s12">
+                <h3>Quote of the Day</h3>
                 <div class="quote"></div>
                 <br>
                 <div class="quoteAuthor"></div>
@@ -212,12 +211,12 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <a href="#"><i class="material-icons">file_download</i></a>
+                <a href="#"><i class="material-icons file_download">file_download</i></a>
             </div>
         </div>
         <div class="row">
             <div class="col s12">
-                <a href="#"><i class="material-icons">picture_as_pdf</i></a>
+                <button class="pdfpage-download-btn"> <a href="#"><i class="material-icons picture_as_pdf">picture_as_pdf</i></a></button>
             </div>
         </div>
         <div class="row">
@@ -234,73 +233,8 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-
-        // side navigation bar 
-        const slide_menu = document.querySelectorAll(".sidenav");
-
-        M.Sidenav.init(slide_menu, {});
-
-        // dynamic pages
-
-        $(document).ready(function () {
-
-            $(".homepage-icon").on("click", homepage);
-            $(".journal-icon").on("click", newEntry);
-            $(".prev-post-icon").on("click", prevPosts);
-            $(".pdf-download-icon").on("click", pdfDownload);
-        });
-        function newEntry() {
-            $("#homepage").addClass('hidden');
-            $("#prev-posts").addClass('hidden');
-            $("#pdf-download").addClass('hidden');
-            $("#journal-entry").removeClass('hidden');
-        };
-        function homepage() {
-            $("#journal-entry").addClass('hidden');
-            $("#prev-posts").addClass('hidden');
-            $("#pdf-download").addClass('hidden');
-            $("#homepage").removeClass('hidden');
-        };
-        function prevPosts() {
-            $("#journal-entry").addClass('hidden');
-            $("#pdfDownload").addClass('hidden');
-            $("#homepage").addClass('hidden');
-            $("#prev-posts").removeClass('hidden');
-        };
-        function pdfDownload() {
-            $("#journal-entry").addClass('hidden');
-            $("#homepage").addClass('hidden');
-            $("#prev-posts").addClass('hidden');
-            $("#pdf-download").removeClass('hidden');
-        };
-
-        homepage()
-
-        // inspirational quotes api
-        const settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://type.fit/api/quotes",
-            "method": "GET"
-        }
-
-        $.ajax(settings).done(function (response) {
-            var number = Math.floor(Math.random() * 1643);
-            const data = JSON.parse(response);
-            var quote = $(".quote").text(data[number].text);
-            var quoteAuthor = $(".quoteAuthor").text("-" + data[number].author);
-            console.log(data);
-            console.log(data);
-            console.log(data[number].author)
-            console.log(data[number].text)
-            console.log(number)
-        });
-    </script>
-
-    <script type="text/javascript" href="dynamic-pages.js"></script>
+    <script type="text/javascript" src="js/dynamic-pages.js"></script>
     <script type="text/javascript" src="js/signup.js"></script>
 
 </body>
-
 </html>
