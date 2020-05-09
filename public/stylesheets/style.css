@@ -181,13 +181,17 @@ nav ul li a {
 /* CONTAINER AND DIV STYLING START */
 
 div.full-page {
-    padding: 0px 25px 0px 25px;
+    padding: 100px 25px 0px 25px;
 }
 
 .row {
     display: flex;
     width: 100%;
     margin-top: 25px;
+}
+
+.row.no-space {
+    margin: 10px;
 }
 
 .col.s1 {
@@ -209,6 +213,11 @@ div.full-page {
 
 .mood-button-row {
     margin-top: 15px;
+}
+
+.mood-buttons:active {
+    position:relative;
+    top:1px;
 }
 
 .mood-inspiration {
@@ -273,7 +282,13 @@ textarea#body-input {
     padding: 10px!important;
 }
 
-.input-field>label.journal-entry-label {
+textarea#author-input {
+    width: 200px;
+    background-color: #ffffff;
+    border: 1px solid #000000!important;
+}
+
+.input-field>label {
     color: #000000;
     font-family: 'Roboto Slab', serif;
     font-size: 18px;
