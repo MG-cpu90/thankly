@@ -1,73 +1,72 @@
-const thankForm = $("form.login");
 const authorInput = $("#author-input");
 const bodyInput = $("#body-input");
 const promptHeading = $("#prompt-heading");
 const postThank = $("#post-thank");
 const thankArea = $("#thank-area");
-const deleteThankButton= $(".delete-thank");
+const deleteThankButton = $(".delete-thank");
 
 $(document).ready(function () {
   // Getting references to our form and input
 
-
-
   postThank.on("click", function (event) {
     event.preventDefault();
-    //console.log("clicked");
 
     // Make a userPost object
-    var userPost = {
+    let userPost = {
       author: authorInput.val().trim(),
       body: bodyInput.val().trim(),
       created_at: moment().format("YYYY-MM-DD HH:mm:ss")
     };
+    // Wont submit the thank if we are missing a body or author
     if (!userPost.author || !userPost.body) {
       return;
     }
 
-    // Send an AJAX POST-request with jQuery
+    // Send an AJAX POST-request with jQuery to Post a new Thank
     $.post("/api/new/" + postThank.data("promptid"), userPost)
       // On success, run the following code
-      .then(function () {
-        //console.log(userPost);
+      .then(function (res) {
+        // Get all thanks
+        $.get("/api/all", function (data) {
 
-        var row = $("<div class='col s12'>");
+          // Generate HTML for new thank
+          let row = $("<div class='col s12'>");
 
-        row.addClass("thank");
+          row.addClass("thank");
 
-        row.append(
-          `
-        <div class="col s12">
-                <div class="row">
-                    <div class="col s12">
-                        <p class="name-example">${userPost.author} posted:</p>
-                        <p class="date-example">At ${moment(userPost.createdAt).format("h:mma on dddd, MMMM Do YYYY")}</p>
-                        <p class="prompt-example">What are 5 things you're grateful for today?</p>
-                        <p class="thank-example">${userPost.body}</p>
-                        <a class="waves-effect waves-light btn delete-thank"><i class="material-icons">delete</i></a>
-                    </div>
-                </div>
-            </div>
-            `);
+          row.append(
+            `
+          <div class="col s12 thank-container1">
+                  <div class="row thank-container2">
+                      <div class="col s12 thank-container3">
+                          <p class="name-example">${userPost.author} posted:</p>
+                          <p class="date-example">At ${moment(userPost.createdAt).format("h:mma on dddd, MMMM Do YYYY")}</p>
+                          <p class="prompt-example">What are 5 things you're grateful for today?</p>
+                          <p class="thank-example">${userPost.body}</p>
+                          <a class="waves-effect waves-light btn delete-thank"><i class="material-icons">delete</i></a>
+                          <a class="waves-effect waves-light btn edit-thank"><i class="material-icons">edit</i></a>
+                      </div>
+                  </div>
+              </div>
+              `);
 
-        thankArea.prepend(row);
+          thankArea.prepend(row);
+
+          // Render database of thanks so that each thank is created with an ID
+          renderThanks(data);
+
+        });
+
+        // Empty each input box by replacing the value with an empty string
+        authorInput.val("");
+        bodyInput.val("");
 
       });
 
-    // Empty each input box by replacing the value with an empty string
-    authorInput.val("");
-    bodyInput.val("");
-
-  });
+  })
 })
 
-$(document).click(function (event) {
-  if ($(event.target).is(".delete-thank")) {
-    console.log("Clicked delete");
-    deleteThank();
-  }
-})
-
+// Send an AJAX GET-request with jQuery to Get a random Prompt
 $.get("/api/prompt", function (data) {
   promptHeading.after(`<h3>${data[0].question}</h3>`);
   postThank.data("promptid", data[0].id);
@@ -76,23 +75,24 @@ $.get("/api/prompt", function (data) {
 // When the page loads, grab all of our thanks
 $.get("/api/all", function (data) {
   renderThanks(data);
-  /*
-  if (data.length !== 0) {
-
-    for (var i = 0; i < data.length; i++) {
-
-      var row = $("<div>");
-      row.addClass("thank");
-
-      row.append("<p>" + data[i].author + " posted: </p>");
-      row.append("<p>" + data[i].body + "</p>");
-      row.append("<p>At " + moment(data[i].createdAt).format("h:mma on dddd, MMMM Do YYYY") + "</p>");
-      row.append(`<button class='delete-thank' data-id=${data[i].id}><i class='fa fa-trash'></i></button>`);
-      thankArea.prepend(row);
-    }
-  }*/
 });
 
+// When the delete button is clicked, delete that particular Thank
+$(document).click(function (event) {
+  if ($(event.target).is(".delete-thank")) {
+    handleDeleteThank();
+  }
+})
+
+// When the edit button is clicked, edit that particular Thank
+$(document).click(function (event) {
+  if ($(event.target).is(".edit-thank")) {
+
+    handleEditThank();
+  }
+})
+
+// Function for rendering all thanks
 function renderThanks(data) {
   thankArea.empty();
   for (var i = 0; i < data.length; i++) {
@@ -100,21 +100,23 @@ function renderThanks(data) {
   }
 }
 
+// Function for displaying thanks
 function displayThank(author, body, createdAt, id) {
-  var row = $("<div class='col s12'>");
+  let row = $("<div class='col s12'>");
 
   row.addClass("thank");
 
   row.append(
     `
-  <div class="col s12">
-          <div class="row">
-              <div class="col s12">
+  <div class="col s12 thank-container1">
+          <div class="row thank-container2">
+              <div class="col s12 thank-container3">
                   <p class="name-example">${author} posted:</p>
                   <p class="date-example">At ${moment(createdAt).format("h:mma on dddd, MMMM Do YYYY")}</p>
                   <p class="prompt-example">What are 5 things you're grateful for today?</p>
                   <p class="thank-example">${body}</p>
                   <a class="waves-effect waves-light btn delete-thank" data-id=${id}><i class="material-icons">delete</i></a>
+                  <a class="waves-effect waves-light btn edit-thank" data-id=${id}><i class="material-icons">edit</i></a>
               </div>
           </div>
       </div>
@@ -123,23 +125,53 @@ function displayThank(author, body, createdAt, id) {
   thankArea.prepend(row);
 }
 
-function deleteThank() {
-  console.log("Thank deleted!");
+// Function handling the DELETE request
+function handleDeleteThank() {
 
-  // var listItemData = $(this).parent("td").parent("tr").data("author");
-  // var id = listItemData.id;
-  // $.ajax({
-  //   method: "DELETE",
-  //   url: "/api/thank/:id" + id
-  // })
-  //   .then(renderThanks);
+  let deleteID = event.target.dataset.id;
 
-  // // Authors Book Activity – delete function example
-  // var listItemData = $(this).parent("td").parent("tr").data("author");
-  // var id = listItemData.id;
+  deleteThank(deleteID);
+}
+
+// Function for deleting a thank
+function deleteThank(id) {
+
+  $.ajax({
+    method: "DELETE",
+    url: "/api/thank/" + id
+  }).then(function (res) {
+    $.get("/api/all", function (data) {
+      renderThanks(data);
+    });
+  })
+
+}
+
+// Function handling the DELETE request
+function handleEditThank() {
+
+  let editID = event.target.dataset.id;
+
+  updateThank(editID);
+}
+
+// Function for updating a given thank
+function updateThank(thank) {
+
+  // let putID = $(this).data("id");
+
   // $.ajax({
-  //   method: "DELETE",
-  //   url: "/api/authors/" + id
+  //   method: "PUT",
+  //   url: "/api/thank" + putID,
+  //   data: thank
   // })
-  //   .then(getAuthors);
+  //   .then(function (res) {
+  console.log("Edit button clicked!");
+  console.log(thank);
+
+  //     $.get("/api/all", function (data) {
+  //       renderThanks(data);
+
+  //   });
+  // })
 }
