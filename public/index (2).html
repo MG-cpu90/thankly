@@ -35,7 +35,7 @@
                 <a href="#" class="brand-logo"><img src="assets/images/Thankly-logo.png" class="brand-logo"></a>
                 <a href="#" class="sidenav-trigger" data-target="slide-out"><i class="material-icons">menu</i></a>
                 <ul class="hide-on-med-and-down right">
-                    <li class="active"><a href="#!" class="homepage-icon">Home</a></li>
+                    <li><a href="#!" class="homepage-icon">Home</a></li>
                     <li><a href="#!" class="journal-icon">New Entry</a></li>
                     <li><a href="#!" class="prev-post-icon">Previous Entries</a></li>
                     <li><a href="#!" class="pdf-download-icon">Download Entries</a></li>
@@ -70,26 +70,35 @@
                 <h1>Welcome</h1>
             </div>
         </div>
+
         <div class="row">
-            <div class="col s12">
+            <div class="col s6 welcome-container">
                 <h3>Hello!</h3>
                 <p>How are you feeling today?</p>
+                <div class="row mood-button-row">
+                    <div class="col s1"><button type="button" class="mood-buttons sadbutton"><img
+                                src="./assets/images/emoticons/Thankly-Face-1.png"
+                                style="height: 75px; width: auto" /></button></div>
+                    <div class="col s1"><button type="button" class="mood-buttons glumbutton"><img
+                                src="./assets/images/emoticons/Thankly-Face-2.png"
+                                style="height: 75px; width: auto" /></button></div>
+                    <div class="col s1"><button type="button" class="mood-buttons mehbutton"><img
+                                src="./assets/images/emoticons/Thankly-Face-3.png"
+                                style="height: 75px; width: auto" /></button></div>
+                    <div class="col s1"><button type="button" class="mood-buttons happybutton"><img
+                                src="./assets/images/emoticons/Thankly-Face-4.png"
+                                style="height: 75px; width: auto" /></button></div>
+                    <div class="col s1"><button type="button" class="mood-buttons happiestbutton"><img
+                                src="./assets/images/emoticons/Thankly-Face-5.png"
+                                style="height: 75px; width: auto" /></button></div>
+                </div>
             </div>
+            <div class="col s5 mood-inspiration valign-wrapper">Select your mood!</div>
         </div>
+
         <div class="row">
-            <div class="col s2"><button type ="button" class="mood-buttons sadbutton"><img src="./assets/images/emoticons/Thankly-Face-1.png" style="height: 75px; width: auto" /></button></div>
-            <div class="col s2"><button type ="button" class="mood-buttons glumbutton"><img src="./assets/images/emoticons/Thankly-Face-2.png" style="height: 75px; width: auto" /></button></div>
-            <div class="col s2"><button type ="button" class="mood-buttons mehbutton"><img src="./assets/images/emoticons/Thankly-Face-3.png" style="height: 75px; width: auto" /></button></div>
-            <div class="col s2"><button type ="button" class="mood-buttons happybutton"><img src="./assets/images/emoticons/Thankly-Face-4.png" style="height: 75px; width: auto" /></button></div>
-            <div class="col s2"><button type ="button" class="mood-buttons happiestbutton"><img src="./assets/images/emoticons/Thankly-Face-5.png" style="height: 75px; width: auto" /></button></div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <div class="mood-inspiration"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
+            <div class="col s5 garden-background"><img src="./assets/images/garden-background.jpg" alt="garden" class="responsive-img" /></div>
+            <div class="col s6 qotd">
                 <h3>Quote of the Day</h3>
                 <div class="quote"></div>
                 <br>
@@ -97,6 +106,7 @@
                 <br>
             </div>
         </div>
+
     </div>
 
     <!-- HOMEPAGE END -->
@@ -114,7 +124,7 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <h4>Sunday, June 1st, 2020</h4>
+                <h3>Sunday, June 1st, 2020</h3>
             </div>
         </div>
         <div class="row">
@@ -124,7 +134,7 @@
                     <option value="1">Random Prompt</option>
                     <option value="2">Freestyle</option>
                 </select>
-                <label>Materialize Select</label>
+                <label>How would you like to start?</label>
             </div>
         </div>
         <div class="row">
@@ -134,16 +144,20 @@
         </div>
         <div class="row">
             <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s4">
+                   <div class="row">
+                    <div class="input-field col s12">
                         <textarea id="author-input" class="materialize-textarea"></textarea>
                         <label for="author-input">Enter your name here...</label>
                     </div>
+                </div>
+                <div class="row">
                     <div class="input-field col s12">
                         <textarea id="body-input" class="materialize-textarea"></textarea>
                         <label for="body-input">Enter your answer here...</label>
                         <a class="waves-effect waves-light btn" id="post-thank">Post</a>
                     </div>
+                </div>
+                </div>
                 </div>
             </form>
         </div>
@@ -162,9 +176,9 @@
                 <h1>Previous Entries</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row prev-buttons">
             <div class="col s4">
-                <a class="waves-effect waves-light btn">Previous Month</a>
+                <a class="waves-effect waves-light btn">Prev Month</a>
             </div>
             <div class="col s4">
                 <a class="waves-effect waves-light btn">This Month</a>
@@ -175,21 +189,22 @@
         </div>
         <div class="row" id="thank-area">
             <div class="col s12">
-                <div class="row">
+                <div class="row prev-entry">
                     <div class="col s12">
-                        <p class="name-example">John</p>
                         <p class="date-example">Sunday, June 1st, 2020</p>
                         <p class="prompt-example">What are 5 things you're grateful for today?</p>
                         <p>
-                            <ol type="1">
-                                <li>My health</li>
-                                <li>My job</li>
-                                <li>Cereal</li>
-                                <li>Chocolate</li>
-                                <li>Wine</li>
-                            </ol>
+                        <ol type="1">
+                            <li>My health</li>
+                            <li>My job</li>
+                            <li>Cereal</li>
+                            <li>Chocolate</li>
+                            <li>Wine</li>
+                        </ol>
                         </p>
-                        <a class="waves-effect waves-light btn delete-thank" id=""><i class="material-icons">delete</i></a>
+                        <p class="author-name">Written by <span class="name-example">John</span></p>
+                        <a class="waves-effect waves-light btn delete-thank" id=""><i
+                                class="material-icons">delete</i></a>
                     </div>
                 </div>
             </div>
@@ -216,7 +231,8 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <button class="pdfpage-download-btn"> <a href="#"><i class="material-icons picture_as_pdf">picture_as_pdf</i></a></button>
+                <button class="pdfpage-download-btn"> <a href="#"><i
+                            class="material-icons picture_as_pdf">picture_as_pdf</i></a></button>
             </div>
         </div>
         <div class="row">
@@ -237,4 +253,5 @@
     <script type="text/javascript" src="js/signup.js"></script>
 
 </body>
+
 </html>
