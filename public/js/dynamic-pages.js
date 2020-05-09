@@ -52,7 +52,7 @@
             var number = Math.floor(Math.random() * 1643);
             const data = JSON.parse(response);
             var quote = $(".quote").text(data[number].text);
-            var quoteAuthor = $(".quoteAuthor").text("-" + data[number].author);
+            var quoteAuthor = $(".quoteAuthor").text("- " + data[number].author);
             console.log(data);
             console.log(data);
             console.log(data[number].author)
