@@ -27,7 +27,7 @@
         };
         function prevPosts() {
             $("#journal-entry").addClass('hidden');
-            $("#pdfDownload").addClass('hidden');
+            $("#pdf-download").addClass('hidden');
             $("#homepage").addClass('hidden');
             $("#prev-posts").removeClass('hidden');
         };
