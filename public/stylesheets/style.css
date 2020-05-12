@@ -60,14 +60,15 @@ table {
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 
 p {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 20px;
+    color: #333333;
 }
 
 li {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     font-size: 18px;
 }
 
@@ -77,6 +78,7 @@ h1 {
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
+    color: #333333;
 }
 
 h3 {
@@ -126,19 +128,61 @@ a > * {
 /* BASIC STYLES START */
 
 body {
-    background: url(../assets/images/thankly_background_2.png);
+    background-color: #CED6C7;
+    /* background: url(../assets/images/thankly_background_3.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center center; */
 }
 
 .waves-effect.waves-light.btn {
-    background-color: #BAC8D3;
-    color: #000000;
+    background-color: #516F46;
+    color: #ffffff;
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     font-weight: 500;
     border-radius: 0px;
+}
+
+.waves-effect.waves-light.btn:hover {
+background-color: #1F3C1A;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    font-weight: 700;
+  border-bottom: 1px solid #ffffff;
+  -webkit-box-shadow: 0 1px 0 0 #1F3C1A;
+          box-shadow: 0 1px 0 0 #1F3C1A;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+    font-weight: 700;
+    font-size: 20px;
+  color: #1F3C1A;
 }
 
 /* BASIC STYLES END */
@@ -146,7 +190,7 @@ body {
 /* MAIN NAV START */
 
 nav {
-    background-color: #BAC8D3;
+    background-color: #92a08c;
     position: absolute;
     top: 0;
     height: 75px;
@@ -169,7 +213,7 @@ nav ul li a {
     font-size: 18px;
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
-    color: #000000;
+    color: #ffffff;
     display: block;
     padding: 0 15px;
     cursor: pointer;
@@ -181,7 +225,7 @@ nav ul li a {
 /* CONTAINER AND DIV STYLING START */
 
 div.full-page {
-    padding: 100px 25px 0px 25px;
+    padding: 75px 25px 0px 25px;
 }
 
 .row {
@@ -221,11 +265,11 @@ div.full-page {
 }
 
 .mood-inspiration {
-    background-color: #9E939C;
+    background-color: #516F46;
     color: #ffffff;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 20px;
     padding: 50px!important;
     box-shadow: 5px 5px 5px #888888;
@@ -289,16 +333,16 @@ textarea#author-input {
 }
 
 .input-field>label {
-    color: #000000;
-    font-family: 'Roboto Slab', serif;
+    color: #333333;
+    font-family: 'Roboto', serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 20px;
     padding: 10px!important;
 }
 
 .journal-entry-active {
-    color: #000000;
+    color: #333333;
 }
 
 /* JOURNAL ENTRY PAGE END */
@@ -316,9 +360,9 @@ textarea#author-input {
 
 #thank-area {
     background-color: #ffffff;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 20px;
     padding: 25px!important;
     box-shadow: 5px 5px 5px #888888;
