@@ -56,14 +56,14 @@ table {
 
 /* TYPOGRAPHY START */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 
 p {
     font-family: 'Roboto', serif;
     font-size: 18px;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 24px;
     color: #333333;
 }
 
@@ -185,6 +185,31 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #1F3C1A;
 }
 
+.input-field > label {
+    color: #9e9e9e;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    cursor: text;
+    -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out;
+    transition: color .2s ease-out, -webkit-transform .2s ease-out;
+    transition: transform .2s ease-out, color .2s ease-out;
+    transition: transform .2s ease-out, color .2s ease-out, -webkit-transform .2s ease-out;
+    -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+    text-align: initial;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  
+  .input-field > label:not(.label-icon).active {
+    -webkit-transform: translateY(-35px) scale(0.8);
+            transform: translateY(-35px) scale(0.8);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+  }
+
 /* BASIC STYLES END */
 
 /* MAIN NAV START */
@@ -218,6 +243,21 @@ nav ul li a {
     padding: 0 15px;
     cursor: pointer;
     line-height: 75px;    
+}
+
+.sidenav li>a {
+    font-size: 18px;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+}
+
+.sidenav {
+    background-color: #92a08c;
+}
+
+.sidenav li>a>i, .sidenav li>a>[class^="mdi-"], .sidenav li>a li>a>[class*="mdi-"], .sidenav li>a>i.material-icons {
+    color: #ffffff;
 }
 
 /* MAIN NAV END */
@@ -257,6 +297,11 @@ div.full-page {
 
 .mood-button-row {
     margin-top: 15px;
+}
+
+.mood-btn-img {
+    height: 75px;
+    width: auto
 }
 
 .mood-buttons:active {
@@ -338,7 +383,7 @@ textarea#author-input {
     font-size: 18px;
     font-weight: 400;
     line-height: 20px;
-    padding: 10px!important;
+    padding: 10px 10px 10px 10px!important;
 }
 
 .journal-entry-active {
@@ -406,3 +451,58 @@ a.delete-thank {
 }
 
 /* PDF PAGE END */
+
+/* MOBILE STYLING */
+
+@media only screen and (max-width: 1600px) {
+    .mood-btn-img {
+        height: 35px;
+        width: auto
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    div.full-page {
+        padding: 50px 5px 0px 5px;
+    }
+    
+    .row .col {
+        display: table-cell;
+        float: none;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        min-height: 1px;
+        padding: 0px;
+        margin: 10px;
+    }
+
+    .row.no-space {
+        margin: 10px auto;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .welcome-container {
+        padding: 5px!important;
+    }    
+
+    .mood-btn-img {
+        height: 35px;
+        width: auto
+    }
+
+    .qotd {
+        padding: 5px!important;
+    }
+
+    .mood-inspiration {
+        padding: 5px!important;
+        margin: 10px!important;
+    }
+
+    .row .col.s4 {
+        margin: 0px 5px 0px 5px;
+    }
+}
