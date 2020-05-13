@@ -53,33 +53,23 @@
             const data = JSON.parse(response);
             var quote = $(".quote").text(data[number].text);
             var quoteAuthor = $(".quoteAuthor").text("- " + data[number].author);
-            console.log(data);
-            console.log(data);
-            console.log(data[number].author)
-            console.log(data[number].text)
-            console.log(number)
         });
   
         // mood buttons
         $(document).ready(function() {
             $(".sadbutton").on("click", function() {
-                console.log("hi")
                 $(".mood-inspiration").text("It's ok to feel sad, wrap yourself in a cocoon of blankets and take some 'you' time!");
             });
             $(".glumbutton").on("click", function() {
-                console.log("hi")
                 $(".mood-inspiration").text("Got a little rain cloud over your head? Remember you are loved.");
             });
             $(".mehbutton").on("click", function() {
-                console.log("hi")
                 $(".mood-inspiration").text("We all have 'meh' days, fill out your daily 'THANKLY' post to change that glass half empty to a glass half full!");
             });
             $(".happybutton").on("click", function() {
-                console.log("hi")
                 $(".mood-inspiration").text("Things are really coming up YOU today!");
             });
             $(".happiestbutton").on("click", function() {
-                console.log("hi")
                 $(".mood-inspiration").text("You are champion of the world!");
             });
       
