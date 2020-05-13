@@ -141,5 +141,5 @@ THEN… I am can download my journal entries as a PDF.
 * [type.fit](https://type.fit/api/quotes) (Random Inspirational Quotes)
 
 ## Links
-* Deployed URL: 
+* Deployed URL: https://thankly-test.herokuapp.com/
 * GitHub repository: https://github.com/MG-cpu90/thankly
