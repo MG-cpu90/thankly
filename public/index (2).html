@@ -15,12 +15,8 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="./stylesheets/style.css">
-
-    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Thankly</title>
@@ -64,47 +60,38 @@
     <div id="homepage" class="container full-page">
 
         <div class="row">
-            <div class="col s6 welcome-container">
+            <div class="col s12 m6 l6 welcome-container">
+                <p>
                 <h3>Hello!</h3>
                 <p>How are you feeling today?</p>
-                <div class="row mood-button-row">
-                    <div class="col s1"><button type="button" class="mood-buttons sadbutton"><img
-                                src="./assets/images/emoticons/Thankly-Face-1.png"
-                                class="mood-btn-img" /></button></div>
-                    <div class="col s1"><button type="button" class="mood-buttons glumbutton"><img
-                                src="./assets/images/emoticons/Thankly-Face-2.png"
-                                class="mood-btn-img" /></button></div>
-                    <div class="col s1"><button type="button" class="mood-buttons mehbutton"><img
-                                src="./assets/images/emoticons/Thankly-Face-3.png"
-                                class="mood-btn-img" /></button></div>
-                    <div class="col s1"><button type="button" class="mood-buttons happybutton"><img
-                                src="./assets/images/emoticons/Thankly-Face-4.png"
-                                class="mood-btn-img" /></button></div>
-                    <div class="col s1"><button type="button" class="mood-buttons happiestbutton"><img
-                                src="./assets/images/emoticons/Thankly-Face-5.png"
-                                class="mood-btn-img" /></button></div>
-                </div>
+                <button type="button" class="mood-buttons sadbutton"><img
+                        src="./assets/images/emoticons/Thankly-Face-1.png" class="mood-btn-img" /></button>
+                <button type="button" class="mood-buttons glumbutton"><img
+                        src="./assets/images/emoticons/Thankly-Face-2.png" class="mood-btn-img" /></button>
+                <button type="button" class="mood-buttons mehbutton"><img
+                        src="./assets/images/emoticons/Thankly-Face-3.png" class="mood-btn-img" /></button>
+                <button type="button" class="mood-buttons happybutton"><img
+                        src="./assets/images/emoticons/Thankly-Face-4.png" class="mood-btn-img" /></button>
+                <button type="button" class="mood-buttons happiestbutton"><img
+                        src="./assets/images/emoticons/Thankly-Face-5.png" class="mood-btn-img" /></button>
             </div>
-            <div class="col s5 mood-inspiration valign-wrapper">Select your mood!</div>
+
+            <div class="col s12 m5 l5 mood-inspiration valign-wrapper">
+                Select your mood!
+            </div>
         </div>
 
         <div class="row">
-            <div class="col s5 garden-background"><img src="./assets/images/garden-background.jpg" alt="garden" class="responsive-img" /></div>
-            <div class="col s6 qotd">
-                <h3>Quote of the Day</h3>
+            <div class="col s12 m5 l5 garden-background"><img src="./assets/images/garden-background.jpg" alt="garden" class="responsive-img" /></div>
+            <div class="col s12 m6 l6 qotd"><h3>Quote of the Day</h3>
                 <div class="quote"></div>
                 <br>
-                <div class="quoteAuthor"></div>
-                <br>
-            </div>
-        </div>
+                <div class="quoteAuthor"></div></div>
+          </div>
 
     </div>
 
     <!-- HOMEPAGE END -->
-
-
-
 
 
     <!-- JOURNAL ENTRY START -->
@@ -136,7 +123,7 @@
         </div>
         <div class="row no-space">
             <form class="col s12">
-                   <div class="row no-space">
+                <div class="row no-space">
                     <div class="input-field col s12">
                         <textarea id="author-input" class="materialize-textarea"></textarea>
                         <label for="author-input">Your Name</label>
@@ -149,10 +136,10 @@
                         <a class="waves-effect waves-light btn" id="post-thank">Post</a>
                     </div>
                 </div>
-                </div>
-                </div>
-            </form>
         </div>
+    </div>
+    </form>
+    </div>
     </div>
 
     <!-- JOURNAL ENTRY END -->
@@ -166,17 +153,6 @@
         <div class="row">
             <div class="col s12">
                 <h1>Previous Entries</h1>
-            </div>
-        </div>
-        <div class="row prev-buttons">
-            <div class="col s4">
-                <a class="waves-effect waves-light btn">Prev Month</a>
-            </div>
-            <div class="col s4">
-                <a class="waves-effect waves-light btn">This Month</a>
-            </div>
-            <div class="col s4">
-                <a class="waves-effect waves-light btn">Next Month</a>
             </div>
         </div>
         <div class="row" id="thank-area">
@@ -217,20 +193,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12">
-                <a href="#"><i class="material-icons file_download">file_download</i></a>
+            <div class="col s12 pdf-download-link">
+                <h3 class="pdf-download-header"><a href="assets/pdf/web/viewer.html?file=THANKLY_Journal.pdf"
+                        target="_blank">Download PDF</a></h3>
             </div>
         </div>
         <div class="row">
             <div class="col s12">
-                <a href="assets/pdf/web/viewer.html?file=THANKLY_Journal.pdf">Thankly Journal</a>
-                <!-- <button class="pdfpage-download-btn"><a href="assets/pdf/THANKLY_Journal.pdf"><i
-                            class="material-icons picture_as_pdf">picture_as_pdf</i></a></button> -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <p>Click on the "PDF" icon above to download your Thankly journal to your desktop.</p>
+                <p class="pdf-download-blurb">Click the link above to download your Thankly journal to your desktop.</p>
             </div>
             </form>
         </div>
