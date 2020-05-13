@@ -433,18 +433,27 @@ a.delete-thank {
 
 /* PDF PAGE START */
 
+.pdf-download-header a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    color: #92a08c;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
 .pdf-download-section {
     margin: 0 auto;
     text-align: center;
 }
 
-.pdfpage-download-btn {
-    height: 200px;
-    width: auto;
+.pdf-download-link {
+    margin: 0 auto;
+    text-align: center;
 }
 
-.picture_as_pdf{
-        height: 200px;
+.pdf-download-blurb {
+    text-align: center;
 }
 
 /* PDF PAGE END */
@@ -462,16 +471,6 @@ a.delete-thank {
     div.full-page {
         padding: 50px 5px 0px 5px;
     }
-    
-    .row .col {
-        display: table-cell;
-        float: none;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        min-height: 1px;
-        padding: 0px;
-        margin: 10px;
-    }
 
     .row.no-space {
         margin: 10px auto;
@@ -483,6 +482,7 @@ a.delete-thank {
 
     .welcome-container {
         padding: 5px!important;
+        text-align:center;
     }    
 
     .mood-btn-img {
@@ -492,6 +492,17 @@ a.delete-thank {
 
     .qotd {
         padding: 5px!important;
+    }
+
+    .qotd h3 {
+        font-size: 22px;
+    }
+
+    .qotd .quote {
+        font-family: 'Dancing Script', cursive;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 34px;
     }
 
     .mood-inspiration {
