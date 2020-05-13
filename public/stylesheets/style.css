@@ -1,6 +1,6 @@
 /* CSS RESET START */
 
-/* html, body, div, span, applet, object, iframe,
+html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -19,9 +19,9 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-}  */
+} 
 /* HTML5 display-role reset for older browsers */
-/* article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -29,7 +29,7 @@ body {
 	line-height: 1;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
 	quotes: none;
@@ -42,7 +42,7 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}  */
+} 
 
 /* CSS RESET END */
 
@@ -60,7 +60,7 @@ table {
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 
 p {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
@@ -68,7 +68,7 @@ p {
 }
 
 li {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
 
@@ -96,24 +96,16 @@ h4 {
     text-decoration: underline;
 }
 
-/* Form */
-.mood-buttons{
-    background-color: transparent!important;
-    border: none;
-    color: #dac1b6;
-    padding: 0px;
-}
+/* TYPOGRAPHY END */
 
-.mood
-
-/* Form */
+/* LOGIN FORM */
 
 form.signup,
 form.login {
   margin-top: 50px;
 }
 
-/* Make Icons for buttons and links clickable */
+/* MAKE ICONS FOR BUTTONS AND LINKS CLICKABLE */
 
 button > * {
   pointer-events: none;
@@ -123,16 +115,10 @@ a > * {
   pointer-events: none;
 }
 
-/* TYPOGRAPHY END */
-
 /* BASIC STYLES START */
 
 body {
     background-color: #CED6C7;
-    /* background: url(../assets/images/thankly_background_3.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center; */
 }
 
 .waves-effect.waves-light.btn {
@@ -283,7 +269,7 @@ div.full-page {
     margin: auto;
 }
 
-/* CONTAINER AND DIV STYLING START */
+/* CONTAINER AND DIV STYLING END */
 
 /* HOMEPAGE START */
 
@@ -299,6 +285,13 @@ div.full-page {
     margin-top: 15px;
 }
 
+.mood-buttons{
+    background-color: transparent!important;
+    border: none;
+    color: #dac1b6;
+    padding: 0px;
+}
+
 .mood-btn-img {
     height: 75px;
     width: auto
@@ -312,7 +305,7 @@ div.full-page {
 .mood-inspiration {
     background-color: #516F46;
     color: #ffffff;
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 20px;
@@ -379,7 +372,7 @@ textarea#author-input {
 
 .input-field>label {
     color: #333333;
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 20px;
@@ -405,7 +398,7 @@ textarea#author-input {
 
 #thank-area {
     background-color: #ffffff;
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 20px;
@@ -416,6 +409,10 @@ textarea#author-input {
 .date-example {
     font-weight: 700;
     text-decoration: underline;
+}
+
+ol {
+list-style: decimal;
 }
 
 .author-name {
@@ -452,7 +449,7 @@ a.delete-thank {
 
 /* PDF PAGE END */
 
-/* MOBILE STYLING */
+/* MOBILE STYLING START */
 
 @media only screen and (max-width: 1600px) {
     .mood-btn-img {
@@ -506,3 +503,5 @@ a.delete-thank {
         margin: 0px 5px 0px 5px;
     }
 }
+
+/* MOBILE STYLING END */
