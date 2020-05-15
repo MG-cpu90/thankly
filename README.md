@@ -15,7 +15,6 @@ This application allow users who might be feeling the effects of depression or i
 * Random prompts to assist users with writing a new Thank
 * Ability to add new Thanks to the gratitude journal
 * Ability to view all previous entries in the gratitude journal
-* Ability to modify entries in the gratitude journal
 * Ability to delete entries in the gratitude journal
 * Mobile responsive
 
@@ -115,6 +114,7 @@ THEN… I am can download my journal entries as a PDF.
 * [Adobe InDesign](https://www.adobe.com/products/indesign.html)
 * [Zoom](http://www.zoom.us/)
 * [Slack](https://slack.com/intl/en-ca/)
+* [JawsDB](https://devcenter.heroku.com/articles/jawsdb)
 
 ### Libraries
 * [Express](https://expressjs.com/)
