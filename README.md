@@ -115,6 +115,7 @@ THEN… I am can download my journal entries as a PDF.
 * [Adobe InDesign](https://www.adobe.com/products/indesign.html)
 * [Zoom](http://www.zoom.us/)
 * [Slack](https://slack.com/intl/en-ca/)
+* [JawsDB](https://devcenter.heroku.com/articles/jawsdb)
 
 ### Libraries
 * [Express](https://expressjs.com/)

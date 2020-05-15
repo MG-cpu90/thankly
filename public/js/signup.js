@@ -5,6 +5,7 @@ $(document).ready(function () {
   const postThank = $("#post-thank");
   const thankArea = $("#thank-area");
   const deleteThankButton = $(".delete-thank");
+  const dateTodayEntry = $(".dateTodayEntry");
 
   // Send an AJAX GET-request with jQuery to Get a random Prompt
   $.get("/api/prompt", function (data) {
