@@ -98,13 +98,6 @@ h4 {
 
 /* TYPOGRAPHY END */
 
-/* LOGIN FORM */
-
-form.signup,
-form.login {
-  margin-top: 50px;
-}
-
 /* MAKE ICONS FOR BUTTONS AND LINKS CLICKABLE */
 
 button > * {

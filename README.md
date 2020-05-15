@@ -15,7 +15,6 @@ This application allow users who might be feeling the effects of depression or i
 * Random prompts to assist users with writing a new Thank
 * Ability to add new Thanks to the gratitude journal
 * Ability to view all previous entries in the gratitude journal
-* Ability to modify entries in the gratitude journal
 * Ability to delete entries in the gratitude journal
 * Mobile responsive
 

@@ -31,11 +31,6 @@ module.exports = function (app) {
       res.end();
     });
 
-    // // Prompt
-    // db.Prompts.findOne({ where: { id: req.params.id }}).then((idThank) => {
-    //   console.log(idThank);
-    //   res.json(idThank);
-    // })
   });
 
   // GET route for getting all thanks 

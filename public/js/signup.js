@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // Variables
   const authorInput = $("#author-input");
   const bodyInput = $("#body-input");
   const promptHeading = $("#prompt-heading");
@@ -6,6 +7,9 @@ $(document).ready(function () {
   const thankArea = $("#thank-area");
   const deleteThankButton = $(".delete-thank");
   const dateTodayEntry = $(".dateTodayEntry");
+
+  // Display today's date on the "New Entry" page
+  dateTodayEntry.text(moment().format("dddd, MMMM Do, YYYY").toString());
 
   // Send an AJAX GET-request with jQuery to Get a random Prompt
   $.get("/api/prompt", function (data) {
@@ -28,14 +32,6 @@ $(document).ready(function () {
     }
   })
 
-  // When the edit button is clicked, edit that particular Thank
-  $(document).click(function (event) {
-    if ($(event.target).is(".edit-thank")) {
-
-      handleEditThank();
-    }
-  })
-
   // Function for rendering all thanks
   function renderThanks(allThanks) {
     thankArea.empty();
@@ -45,6 +41,7 @@ $(document).ready(function () {
     };
   }
 
+  // Function for getting and displaying data
   function getandDisplayData(thank){
     $.get("/api/prompt/" + thank.prompt, function (res) {
       console.log("In question");
@@ -101,38 +98,7 @@ $(document).ready(function () {
 
   }
 
-  // Function handling the DELETE request
-  function handleEditThank() {
-
-    let editID = event.target.dataset.id;
-
-    updateThank(editID);
-  }
-
-  // Function for updating a given thank
-  function updateThank(thank) {
-
-    // let putID = $(this).data("id");
-
-    // $.ajax({
-    //   method: "PUT",
-    //   url: "/api/thank" + putID,
-    //   data: thank
-    // })
-    //   .then(function (res) {
-    console.log("Edit button clicked!");
-    console.log(thank);
-
-    //     $.get("/api/all", function (data) {
-    //       renderThanks(data);
-
-    //   });
-    // })
-  }
-
-
   // Getting references to our form and input
-
   postThank.on("click", function (event) {
     event.preventDefault();
 
